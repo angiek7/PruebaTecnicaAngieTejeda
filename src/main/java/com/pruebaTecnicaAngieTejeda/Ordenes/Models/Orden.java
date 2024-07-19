@@ -9,8 +9,10 @@ package com.pruebaTecnicaAngieTejeda.Ordenes.Models;
  * @author KAROLA
  */
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,8 +32,10 @@ public class Orden {
     private Double total;
     private LocalDateTime fecha;
     
-    @OneToMany(mappedBy = "orden", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "orden", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<OrdenItem> items = new ArrayList<>();
+    
 
     // Getters y Setters
     public Long getId() {
@@ -58,11 +62,11 @@ public class Orden {
         this.total = total;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setDate(LocalDateTime fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 

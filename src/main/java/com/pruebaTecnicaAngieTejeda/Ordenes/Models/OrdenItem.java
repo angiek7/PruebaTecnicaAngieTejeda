@@ -4,6 +4,7 @@
  */
 package com.pruebaTecnicaAngieTejeda.Ordenes.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -29,6 +30,7 @@ public class OrdenItem {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ordenes_id")
+    @JsonBackReference
     private Orden orden;
 
     // Getters y Setters
@@ -48,19 +50,19 @@ public class OrdenItem {
         this.productId = productId;
     }
 
-    public Integer getQuantity() {
+    public Integer getCantidad() {
         return cantidad;
     }
 
-    public void setQuantity(Integer cantidad) {
+    public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
 
-    public Double getPrice() {
+    public Double getPrecio() {
         return precio;
     }
 
-    public void setPrice(Double precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 
